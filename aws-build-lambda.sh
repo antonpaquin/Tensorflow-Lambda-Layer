@@ -232,9 +232,10 @@ ssh -i "$SSH_KEY" ec2-user@$INSTANCE_IP <<ENDSSH
 	rm test.py
 	popd
 	
+
 	# Zip up the build for lambda
-	pushd build
-	zip -r9 lambda.zip *
+	mv build python
+	zip -r9 lambda.zip python/
 	mv lambda.zip ..
 	popd
 
