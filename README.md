@@ -41,5 +41,3 @@ removing any file that wasn't touched. If there's some conditional branch that I
 test your app to see if everything works!
 
 The unzipped file size is about 230 MB. The zipped size is about 60 MB, which is over the stated limit, but under the enforced limit.
-
-I'll publish an ARN here as soon as I figure out how to make it shareable, which currently doesn't work from aws-cli.
