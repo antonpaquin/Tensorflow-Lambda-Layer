@@ -7,6 +7,17 @@ It's a lambda layer that includes Tensorflow, Keras, and Numpy. You can use it t
 ## How do I use it?
 First, download latest release from [here](https://github.com/antonpaquin/Tensorflow-Lambda-Layer/releases)
 
+### Easy way
+In the AWS lambda management console, create a new function you want to use Tensorflow in, or pick an existing function. 
+
+Click
+- layers
+  - add layer
+    - provide a layer version ARN
+ 
+You can use the ARN I've published: **arn:aws:lambda:us-east-1:347034527139:layer:Tensorflow:3**
+
+### Manual way
 From your AWS console, go to
 - lambda management console
   - layers
