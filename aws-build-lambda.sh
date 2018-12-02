@@ -236,8 +236,6 @@ ssh -i "$SSH_KEY" ec2-user@$INSTANCE_IP <<ENDSSH
 	# Zip up the build for lambda
 	mv build python
 	zip -r9 lambda.zip python/
-	mv lambda.zip ..
-	popd
 
 	# And copy it to an s3 bucket
 	aws s3 cp lambda.zip s3://$LAMBDA_S3_BUCKET/tf_lambda_layer.zip
