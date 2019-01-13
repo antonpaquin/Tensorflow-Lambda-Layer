@@ -69,6 +69,8 @@ tensorflow version | keras version | PIL version | unzipped size | ARN
 --- | --- | --- | --- | ---
 1.8.0 | 2.2.4 | 5.4.1 | 203M | arn:aws:lambda:us-east-1:347034527139:layer:tf_keras_pillow:3
 
+Size measurements taken with `du -sh`. Given that 1.12.0 is over 250MB, I'm not sure it's useable, but Amazon lets me upload it, so it's available.
+
 ## Build it yourself
 The code involved in generating these layers is all included in `src` and `build_targets`. 
 The code is a collection of shell scripts that constructs, uploads, and publishes the lambda zipfiles. It reads AWS credentials from $HOME/.aws, and spawns an instance to actually run the build process (note: does not shut it off automatically).
