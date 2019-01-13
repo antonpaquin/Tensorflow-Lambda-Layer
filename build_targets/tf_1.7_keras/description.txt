@@ -1,0 +1,1 @@
+Tensorflow==1.7.1 and keras
