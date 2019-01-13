@@ -5,7 +5,9 @@ Lets you import Tensorflow + Keras from an AWS lambda
 It's a lambda layer that includes Tensorflow, Keras, and Numpy. You can use it to deploy serverless machine learning models.
 
 Serverless is especially nice for when you want to serve a model that will be accessed infrequently, without paying for an always-on ec2 instance. 
+
 If you're a single developer or small org and all you want to do is [show off your binary classifier](http://isitanime.website), it's usually possible to stay within the free tier limits if you set things up right. 
+
 And even if you're larger, serverless brings a lot of benefits, like transparent scaling and the ability to mostly ignore the hardware.
 
 The problem is, some packages (like Tensorflow) end up hard to use. This repo is an attempt to alleviate that problem.
