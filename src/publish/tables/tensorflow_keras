@@ -1,0 +1,14 @@
+build target,tf version,keras version,size,arn
+tf_1.0_keras,1.0.1,2.2.4,169M,`{arn}`
+tf_1.1_keras,1.1.0,2.2.4,174M,`{arn}`
+tf_1.2_keras,1.2.1,2.2.4,178M,`{arn}`
+tf_1.3_keras,1.3.0,2.2.4,184M,`{arn}`
+tf_1.4_keras,1.4.1,2.2.4,199M,`{arn}`
+tf_1.5_keras,1.5.1,2.2.4,213M,`{arn}`
+tf_1.6_keras,1.6.0,2.2.4,215M,`{arn}`
+tf_1.7_keras,1.7.1,2.2.4,218M,`{arn}`
+tf_1.8_keras,1.8.0,2.2.4,223M,`{arn}`
+tf_1.9_keras,1.9.0,2.2.4,227M,`{arn}`
+tf_1.10_keras,1.10.1,2.2.4,236M,`{arn}`
+tf_1.11_keras,1.11.0,2.2.4,231M,`{arn}`
+tf_1.12_keras,1.12.0,2.2.4,282M,`{arn}`

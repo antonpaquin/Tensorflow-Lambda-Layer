@@ -66,9 +66,10 @@ zip \
 	-r "$ROOT_DIR/build/transfer.zip" \
 	--junk-paths \
 	"$ROOT_DIR/build/build_targets.zip" \
-	"$ROOT_DIR/src/setup-server.sh" \
-	"$ROOT_DIR/src/build-layer.sh" \
-	"$ROOT_DIR/src/run-all.sh" \
+	"$ROOT_DIR/src/build_scripts/setup-server.sh" \
+	"$ROOT_DIR/src/build_scripts/build-layer.sh" \
+	"$ROOT_DIR/src/build_scripts/run-all.sh" \
+	"$ROOT_DIR/src/build_scripts/aws_regions" \
 	"$ROOT_DIR/build/build_targets.list"
 
 # Also add aws credentials so that we can cli it to an s3 bucket

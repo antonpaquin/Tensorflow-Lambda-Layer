@@ -1,0 +1,2 @@
+build target,tf version,keras version,pillow version,size,arn
+tf_keras_pillow,1.8.0,2.2.4,5.4.1,230M,{arn}

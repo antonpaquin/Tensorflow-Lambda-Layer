@@ -9,6 +9,7 @@ sudo chown -R ec2-user:ec2-user build
 # Unzip the transfer file sent to the server
 mv build_targets.zip build
 mv build-layer.sh build
+mv aws_regions build
 pushd build
 unzip build_targets.zip
 rm build_targets.zip

@@ -1,6 +1,7 @@
 #! /bin/bash
 
-LAMBDA_S3_BUCKET="antonpaquin-lambda-zip"
+LAMBDA_S3_BUCKET_PREFIX="antonpaquin-lambda-zip-"
+RELEASE=2
 LAYER_NAME="$1"
 LAYER_ROOT="/home/ec2-user/build/$LAYER_NAME"
 LAYER_UPLOAD_NAME="$(echo "$LAYER_NAME" | sed s/'[^a-zA-Z0-9]/_/g')"
@@ -32,6 +33,11 @@ sleep 1;
 # Run a test, which should touch every file that the layer will need to run
 mkdir build
 cp test.py build
+
+if [ -f pre_hook.sh ]; then
+    ./pre_hook.sh
+fi
+
 pushd build
 python3 test.py
 kill $INOTIFY
@@ -80,11 +86,7 @@ zip -r9 lambda.zip python/
 pip freeze > pip.txt
 
 # And copy it to an s3 bucket
-aws s3 cp lambda.zip s3://$LAMBDA_S3_BUCKET/layers/$LAYER_NAME/layer.zip
-aws s3 cp pip.txt s3://$LAMBDA_S3_BUCKET/layers/$LAYER_NAME/pip.txt
-aws lambda publish-layer-version \
-    --layer-name "$LAYER_UPLOAD_NAME" \
-    --description "$(cat description.txt)" \
-    --content S3Bucket=$LAMBDA_S3_BUCKET,S3Key=layers/$LAYER_NAME/layer.zip \
-    --compatible-runtimes python3.6 \
-    --license-info "MIT"
+for region in $(cat ../aws_regions); do
+    aws s3 cp lambda.zip s3://"$LAMBDA_S3_BUCKET_PREFIX""$region"/layers/$RELEASE/$LAYER_NAME/layer.zip
+    aws s3 cp pip.txt s3://"$LAMBDA_S3_BUCKET_PREFIX""$region"/layers/$RELEASE/$LAYER_NAME/pip.txt
+done
