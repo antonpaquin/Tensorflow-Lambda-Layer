@@ -13,8 +13,11 @@ And even if you're larger, serverless brings a lot of benefits, like transparent
 The problem is, some packages (like Tensorflow) end up hard to use. This repo is an attempt to alleviate that problem.
 
 ## How do I use it?
-### Easy way
-Pick an ARN for the version of Tensorflow you want from the table below (for example, `arn:aws:lambda:us-east-1:347034527139:layer:tf_1_8_keras:1`)
+Pick an ARN from the tables for the region and Tensorflow version you want (for example, `arn:aws:lambda:us-west-2:347034527139:layer:tf_1_11_keras:1`)
+
+Tables:
+- [tensorflow and keras](https://github.com/antonpaquin/Tensorflow-Lambda-Layer/blob/master/arn_tables/tensorflow_keras.md)
+- [tensorflow, keras, and PIL](https://github.com/antonpaquin/Tensorflow-Lambda-Layer/blob/master/arn_tables/tensorflow_keras_pillow.md)
 
 In the AWS lambda management console, create a new function you want to use Tensorflow in, or pick an existing function. 
 
@@ -24,52 +27,6 @@ Click
     - provide a layer version ARN
     
 Paste the ARN in, add the layer, and you should be able to use the libraries as normal.
-
-### Manual way
-To manage the layer on your own, download latest release from [here](https://github.com/antonpaquin/Tensorflow-Lambda-Layer/releases)
-
-From your AWS console, go to
-- lambda management console
-  - layers
-    - create layer
-    
-Upload the zipfile, name the new layer whatever you like, and choose `Python 3.6` as the runtime.
-
-Then, go to your function and select
-- layers
-  - add a layer
-  
-and select the newly created layer.
-
-Once that's done, you should be able to `import tensorflow` in your function and use it as normal.
-
-## ARN table
-
-(Note: none of these are extensively tested)
-
-### Tensorflow + Keras
-tensorflow version | keras version | unzipped size | ARN
---- | --- | --- | ---
-1.0.1 | 2.2.4 | 141M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_0_keras:1
-1.1.0 | 2.2.4 | 146M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_1_keras:1
-1.2.1 | 2.2.4 | 150M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_2_keras:1
-1.3.0 | 2.2.4 | 155M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_3_keras:1
-1.4.1 | 2.2.4 | 171M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_4_keras:1
-1.5.1 | 2.2.4 | 185M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_5_keras:1
-1.6.0 | 2.2.4 | 187M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_6_keras:1
-1.7.1 | 2.2.4 | 191M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_7_keras:1
-1.8.0 | 2.2.4 | 196M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_8_keras:1
-1.9.0 | 2.2.4 | 200M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_9_keras:1
-1.10.1 | 2.2.4 | 236M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_10_keras:1
-1.11.0 | 2.2.4 | 204M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_11_keras:1
-1.12.0 | 2.2.4 | 255M | arn:aws:lambda:us-east-1:347034527139:layer:tf_1_12_keras:1
-
-### Tensorflow + Keras + Pillow
-tensorflow version | keras version | PIL version | unzipped size | ARN
---- | --- | --- | --- | ---
-1.8.0 | 2.2.4 | 5.4.1 | 203M | arn:aws:lambda:us-east-1:347034527139:layer:tf_keras_pillow:3
-
-Size measurements taken with `du -sh`. Given that 1.12.0 is over 250MB, I'm not sure it's useable, but Amazon lets me upload it, so it's available.
 
 ## Build it yourself
 The code involved in generating these layers is all included in `src` and `build_targets`. 
@@ -96,3 +53,5 @@ This repo will minimize a deployment package by:
 - Stripping symbols from shared objects
 
 These steps usually produce good results, but they may end up leaving out something essential. If you see an error that you're not expecting, file an issue including the error and the code that generates it, and I'll see what I can fix.
+
+Tensorflow 1.12 + Keras clocks in at 282M, which is too big to fit into a lambda layer. Unless I can find a way to further reduce the size, I can't support this combination.
