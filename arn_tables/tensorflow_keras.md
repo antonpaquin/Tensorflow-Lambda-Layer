@@ -32,7 +32,6 @@ tf_1.8_keras | 1.8.0 | 2.2.4 | 223M | `arn:aws:lambda:us-east-1:347034527139:lay
 tf_1.9_keras | 1.9.0 | 2.2.4 | 227M | `arn:aws:lambda:us-east-1:347034527139:layer:tf_1_9_keras:3`
 tf_1.10_keras | 1.10.1 | 2.2.4 | 236M | `arn:aws:lambda:us-east-1:347034527139:layer:tf_1_10_keras:3`
 tf_1.11_keras | 1.11.0 | 2.2.4 | 231M | `arn:aws:lambda:us-east-1:347034527139:layer:tf_1_11_keras:3`
-tf_1.12_keras | 1.12.0 | 2.2.4 | 282M | `arn:aws:lambda:us-east-1:347034527139:layer:tf_1_12_keras:1`
 
 
 ### us-west-1
